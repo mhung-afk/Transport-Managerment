@@ -1,0 +1,96 @@
+﻿<Window x:Class="TransportManagerment.PriceTableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportManagerment"
+        mc:Ignorable="d"
+        Height="300" Width="500"
+        Name="priceWindow"
+        Title="Bảng niêm yết giá vé"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:uc="clr-namespace:TransportManagerment.MyUserControl"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="LightGray"
+         BorderBrush="Green"
+        BorderThickness="2"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <!--DataContext="{StaticResource MainVM}">-->
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"
+                                   CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Path=Title, ElementName=priceWindow}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <materialDesign:Card Background="PaleGreen" Grid.Row="0" Margin="5">
+                <TextBlock Text="Bảng niêm yết giá vé hiện hành"
+                           FontSize="26"
+                           HorizontalAlignment="Center"
+                           Foreground="Green"/>
+            </materialDesign:Card>
+
+            <materialDesign:Card Background="PaleGreen" Grid.Row="1" Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 VerticalAlignment="Top"
+                                 materialDesign:HintAssist.Foreground="Green"
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                                 Height="50" Width="140" x:Name="txb0" Text="{Binding busprice}"
+                                 materialDesign:HintAssist.Hint="Đơn giá xe buýt" />
+                        <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 VerticalAlignment="Top"
+                                 materialDesign:HintAssist.Foreground="Green"
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                                 Height="50" Width="140" x:Name="txb1" Text="{Binding buspriceNor}"
+                                 materialDesign:HintAssist.Hint="Giá vé ngày thường" />
+                        <TextBox Style="{StaticResource MaterialDesignFilledTextBox}"
+                                 VerticalAlignment="Top"
+                                 materialDesign:HintAssist.Foreground="Green"
+                                 materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                                 Height="50" Width="180" x:Name="txb2" Text="{Binding buspriceWeekend}"
+                                 materialDesign:HintAssist.Hint="Giá vé ngày vào cuối tuần" />
+                    </StackPanel>
+
+                    <Button Grid.Row="1" x:Name="btnUpdate" Click="btnUpdate_Click" 
+                            IsEnabled="{Binding isStaff}" 
+                            Background="LawnGreen" Content="Cập nhật" Margin="5" Width="100"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            materialDesign:ButtonProgressAssist.Value="-1"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"></Button>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>

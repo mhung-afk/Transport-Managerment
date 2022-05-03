@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9038f3c156254aa590ae9c4da9c12cee" Name="Diagram1">
+        <EntityTypeShape EntityType="QLPTCCModel.Account" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Bang_Gia" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Chuyen_tau_xe" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Chuyen_tau_xe_ghe_ga_tram" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Con_duong" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Doan_duong" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Ga_Tram" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Ga_Tram_Lam_Viec" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Giao_lo" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Hanh_Khach" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.HD_ve_ngay" Width="1.5" PointX="10.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.HD_ve_thang" Width="1.5" PointX="7.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Nhan_Vien" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.The_Tu" Width="1.5" PointX="8.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Tuyen_tau_dien" Width="1.5" PointX="10.5" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Tuyen_tau_xe" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Tuyen_xe_bus" Width="1.5" PointX="10.5" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Ve" Width="1.5" PointX="8.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Ve_1_ngay" Width="1.5" PointX="10.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Ve_le" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLPTCCModel.Ve_thang" Width="1.5" PointX="10.5" PointY="14.875" IsExpanded="true" />
+        <AssociationConnector Association="QLPTCCModel.FK__Chuyen_ta__Ma_tu__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Chuyen_tau_xe_gh__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Chuyen_ta__Ma_ga__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Doan_duon__Ma_co__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Doan_duon__Ma_gi__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Doan_duon__Ma_gi__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ga_Tram__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ga_Tram_L__Ma_ga__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__HD_ve_nga__Ma_ga__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__HD_ve_nga__Ma_ga__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__HD_ve_tha__Ga_tr__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__HD_ve_tha__Ga_tr__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ve_le__Ma_ga_tra__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ve_le__Ma_ga_tra__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ve_thang__Ma_ga___75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ve_thang__Ma_ga___76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ga_Tram_L__Ma_nh__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__The_Tu__Ma_hanh___7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ve__Ma_khach_han__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__HD_ve_nga__Ma_tu__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__HD_ve_nga__Ma_ve__7B5B524B" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__HD_ve_tha__Ma_ve__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Tuyen_tau__Ma_tu__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Tuyen_xe___Ma_tu__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ve_le__Ma_tuyen__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ve_thang__Ma_tuy__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ve_1_ngay__Ma_ve__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ve_le__Ma_ve__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="QLPTCCModel.FK__Ve_thang__Ma_ve__73BA3083" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

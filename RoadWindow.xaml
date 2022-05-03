@@ -1,0 +1,87 @@
+﻿<Window x:Class="TransportManagerment.RoadWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportManagerment"
+        mc:Ignorable="d"
+        Height="560" Width="800"
+        Name="roadWindow"
+        Title="Quản lý các con đường thuộc hệ thống"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:uc="clr-namespace:TransportManagerment.MyUserControl"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="LightGray"
+         BorderBrush="Green"
+        BorderThickness="2"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <!--DataContext="{StaticResource MainVM}">-->
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"
+                                   CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Path=Title, ElementName=roadWindow}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <materialDesign:Card Background="PaleGreen" Grid.Row="0" Margin="5">
+                <WrapPanel Margin="0 0 0 10">
+                    <TextBox Text="" Margin="5 5 15 5" x:Name="txbIDroad" IsReadOnly="True"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:HintAssist.Hint="Mã con đường" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="" Margin="5 5 15 5" x:Name="txbNameRoad"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:HintAssist.Hint="Tên đường" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Background="PaleGreen" Grid.Row="1" Margin="5">
+                <WrapPanel>
+                    <Button x:Name="btnAdd" Click="btnAdd_Click" IsEnabled="{Binding isStaff}" Background="Green" Content="Thêm" Margin="5" Width="100"></Button>
+                    <Button x:Name="btnUpdate" Click="btnUpdate_Click" IsEnabled="False" Background="Green" Content="Sửa" Margin="5" Width="100"></Button>
+                    <Button x:Name="btnDelete" Click="btnDelete_Click" IsEnabled="False" Background="Green" Content="Xóa" Margin="5" Width="100"></Button>
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card  Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListView x:Name="lstRoad"
+                              SelectionChanged="lstRoad_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã con đường" DisplayMemberBinding="{Binding Ma_con_duong}"></GridViewColumn>
+                                <GridViewColumn Header="Tên đường" DisplayMemberBinding="{Binding Ten_duong}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>

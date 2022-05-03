@@ -1,0 +1,86 @@
+﻿<Window x:Class="TransportManagerment.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportManagerment"
+        mc:Ignorable="d"
+        Height="280" Width="400"
+        Name="loginWindow"
+        Title="Đăng nhập"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:uc="clr-namespace:TransportManagerment.MyUserControl"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="LightGray"
+         BorderBrush="Green"
+        BorderThickness="2"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <!--DataContext="{StaticResource MainVM}">-->
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"
+                                   CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Path=Title, ElementName=loginWindow}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="10,5,10,5" >
+            <materialDesign:Card Margin="40,5,40,5" Background="PaleGreen"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <TextBox Text="sManager" x:Name="txbUserName" Width="150" Grid.Row="0" 
+                             materialDesign:HintAssist.Hint="Tên đăng nhập"
+                             materialDesign:HintAssist.Foreground="Green"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Center">
+                    </TextBox>
+
+                    <PasswordBox Password="1" x:Name="pwb" Grid.Row="1" 
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         PasswordChar="♥" Width="150"
+                           materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                         materialDesign:HintAssist.Hint="Mật khẩu">
+                    </PasswordBox>
+
+                    <Grid Grid.Row="2" Width="120">
+                        <Button x:Name="btnLogin" Click="btnLogin_Click"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Background="LawnGreen"
+                                IsDefault="True"
+                        materialDesign:ButtonProgressAssist.Value="-1"
+                        materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                        materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                        Margin="2,0">
+                            _Đăng nhập
+                        </Button>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>

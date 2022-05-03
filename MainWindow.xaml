@@ -1,0 +1,309 @@
+﻿<Window x:Class="TransportManagerment.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportManagerment"
+        mc:Ignorable="d"
+        Height="500" Width="750"
+        Name="mainWindow"
+        Title="Phần mềm quản lý phương tiện công cộng"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:uc="clr-namespace:TransportManagerment.MyUserControl"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="PaleGreen"
+        BorderBrush="Green"
+        BorderThickness="2"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Path=Title, ElementName=mainWindow}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="Transparent">
+            <Grid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="2 4 2 4"></Setter>
+                    <Setter Property="Background" Value="LightCyan"></Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnRoad" Click="btnRoad_Click" Grid.Column="0" ToolTip="Con đường">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Con đường" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="RoadVariant" />
+                    </Grid>
+                </Grid>
+            </Button>
+            <Button x:Name="btnDistance" Click="btnDistance_Click" Grid.Column="1" ToolTip="Đoạn đường">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Đoạn đường" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="Road" />
+                    </Grid>
+                </Grid>
+            </Button>
+            <Button x:Name="btnCross" Click="btnCross_Click" Grid.Column="2" ToolTip="Giao lộ">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Giao lộ" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="DirectionsFork" />
+                    </Grid>
+                </Grid>
+            </Button>
+            <Button x:Name="btnStop" Click="btnStop_Click" Grid.Column="3" ToolTip="Ga/Trạm">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Ga/Trạm" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <DockPanel Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="BusStop" />
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="LocalGasStation" />
+                    </DockPanel>
+                </Grid>
+            </Button>
+            <Button x:Name="btnBus" Click="btnBus_Click" Grid.Column="4" ToolTip="Tuyến xe buýt">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Tuyến xe buýt" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="Bus" />
+                    </Grid>
+                </Grid>
+            </Button>
+            <Button x:Name="btnTrain" Click="btnTrain_Click" Grid.Column="5" ToolTip="Tuyến tàu điện">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Tuyến tàu điện" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="Train" />
+                    </Grid>
+                </Grid>
+            </Button>
+            <Button x:Name="btnStaff" Click="btnStaff_Click" Grid.Row="1" Grid.Column="1" ToolTip="Nhân viên">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Nhân viên" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="AccountBoxes" />
+                    </Grid>
+                </Grid>
+            </Button>
+            <Button x:Name="btnConsumer" Click="btnConsumer_Click" Grid.Row="1" Grid.Column="0" ToolTip="Hành khách">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Hành khách" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="HumanHandsup" />
+                    </Grid>
+                </Grid>
+            </Button>
+            <Button x:Name="btnTicket" Click="btnTicket_Click" Grid.Row="1" Grid.Column="2" ToolTip="Vé">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Vé" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="TicketConfirmation" />
+                    </Grid>
+                </Grid>
+            </Button>
+            <Button x:Name="btnTrip" Click="btnTrip_Click" Grid.Row="1" Grid.Column="3" ToolTip="Chuyến tàu/xe">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Chuyến tàu/xe" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="ChevronTripleRight" />
+                    </Grid>
+                </Grid>
+            </Button>
+            <Button x:Name="btnAccount" Click="btnAccount_Click" Grid.Row="1" Grid.Column="5" ToolTip="Người dùng">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Người dùng" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="Account" />
+                    </Grid>
+                </Grid>
+            </Button>
+            <Button x:Name="btnPriceTable" Click="btnPriceTable_Click" Grid.Row="1" Grid.Column="4" ToolTip="Giá vé niêm yết">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <TextBlock Text="Giá vé niêm yết" HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <materialDesign:PackIcon HorizontalAlignment="Center" Width="24" Height="24"  Kind="Cash100" />
+                    </Grid>
+                </Grid>
+            </Button>
+        </Grid>
+
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <materialDesign:Card  Grid.Column="0" Margin="5" VerticalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <materialDesign:Card Background="PaleGreen" Grid.Row="0" Margin="5">
+                        <WrapPanel Margin="0 0 0 10">
+                            <TextBox Grid.Row="0" Margin="10 5 0 5" x:Name="txbIDroute"
+                             Width="110" HorizontalAlignment="Left"
+                             TextChanged="txbIDroute_TextChanged"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:HintAssist.Hint="Mã tuyến đường" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        </WrapPanel>
+                    </materialDesign:Card>
+                    
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <ListView x:Name="lst1">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Số thứ tự trạm" DisplayMemberBinding="{Binding STT_tram}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên trạm" DisplayMemberBinding="{Binding Ten_Tram}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card  Grid.Column="1" Margin="5" VerticalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <materialDesign:Card Background="PaleGreen" Grid.Row="0" Margin="5">
+                        <WrapPanel Margin="0 0 0 10">
+                            <TextBox Grid.Row="0" Margin="10 5 0 5" x:Name="txbRoute2"
+                             Width="70" HorizontalAlignment="Left"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:HintAssist.Hint="Mã tuyến" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <DatePicker VerticalAlignment="Center" x:Name="dtpkFrom"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             Width="70" Margin="5 5 15 5"
+                             materialDesign:HintAssist.Hint="Từ ngày" 
+                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                            <DatePicker VerticalAlignment="Center" x:Name="dtpkTo"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             Width="75" Margin="5 5 15 5"
+                             materialDesign:HintAssist.Hint="Đến ngày" 
+                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                            <Button x:Name="btnAdd" Click="btnAdd_Click" Background="Green" Content="Lọc" Width="60"></Button>
+                        </WrapPanel>
+                    </materialDesign:Card>
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <ListView x:Name="lst2">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Ngày" DisplayMemberBinding="{Binding Ngay, StringFormat='dd-MM-yyyy'}"></GridViewColumn>
+                                    <GridViewColumn Header="Tổng số lượt người" DisplayMemberBinding="{Binding Tong_so_luot_nguoi}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>

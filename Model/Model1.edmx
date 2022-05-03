@@ -1,0 +1,1750 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLPTCCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="displayName" Type="nvarchar" MaxLength="30" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="proxy" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Bang_Gia">
+          <Key>
+            <PropertyRef Name="STT" />
+          </Key>
+          <Property Name="STT" Type="int" Nullable="false" />
+          <Property Name="don_gia_xe_bus" Type="int" />
+          <Property Name="gia_ve_1_ngay_trong_tuan" Type="int" />
+          <Property Name="gia_ve_1_ngay_cuoi_tuan" Type="int" />
+        </EntityType>
+        <EntityType Name="Chuyen_tau_xe">
+          <Key>
+            <PropertyRef Name="Ma_tuyen" />
+            <PropertyRef Name="STT" />
+          </Key>
+          <Property Name="Ma_tuyen" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="STT" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chuyen_tau_xe_ghe_ga_tram">
+          <Key>
+            <PropertyRef Name="Ma_tuyen" />
+            <PropertyRef Name="STT_chuyen" />
+            <PropertyRef Name="Ma_ga_tram" />
+          </Key>
+          <Property Name="Ma_tuyen" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="STT_chuyen" Type="tinyint" Nullable="false" />
+          <Property Name="Ma_ga_tram" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="STT_tram" Type="tinyint" />
+          <Property Name="gio_ghe" Type="time" Precision="7" />
+          <Property Name="gio_di" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Con_duong">
+          <Key>
+            <PropertyRef Name="Ma_con_duong" />
+          </Key>
+          <Property Name="Ma_con_duong" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Ten_duong" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Doan_duong">
+          <Key>
+            <PropertyRef Name="Ma_giao_lo_1" />
+            <PropertyRef Name="Ma_giao_lo_2" />
+          </Key>
+          <Property Name="Ma_giao_lo_1" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Ma_giao_lo_2" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Ma_con_duong" Type="varchar" MaxLength="12" />
+          <Property Name="STT" Type="int" />
+        </EntityType>
+        <EntityType Name="Ga_Tram">
+          <Key>
+            <PropertyRef Name="Ma_ga_tram" />
+          </Key>
+          <Property Name="Ma_ga_tram" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="dia_chi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="100" />
+          <Property Name="Ga_Tram" Type="tinyint" />
+          <Property Name="ma_giao_lo_1" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="ma_giao_lo_2" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ga_Tram_Lam_Viec">
+          <Key>
+            <PropertyRef Name="Ma_nhan_vien" />
+          </Key>
+          <Property Name="Ma_nhan_vien" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Ma_ga_tram" Type="char" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="Giao_lo">
+          <Key>
+            <PropertyRef Name="Ma_giao_lo" />
+          </Key>
+          <Property Name="Ma_giao_lo" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="long" Type="float" />
+          <Property Name="lat" Type="float" />
+        </EntityType>
+        <EntityType Name="Hanh_Khach">
+          <Key>
+            <PropertyRef Name="Ma_hanh_khach" />
+          </Key>
+          <Property Name="Ma_hanh_khach" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="30" />
+          <Property Name="CMND_CCCD" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="nghe_nghiep" Type="nvarchar" MaxLength="50" />
+          <Property Name="dien_thoai" Type="char" MaxLength="10" />
+          <Property Name="gioi_tinh" Type="char" MaxLength="1" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="ngay_sinh" Type="date" />
+        </EntityType>
+        <EntityType Name="HD_ve_ngay">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+            <PropertyRef Name="STT" />
+          </Key>
+          <Property Name="Ma_ve" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="STT" Type="tinyint" Nullable="false" />
+          <Property Name="Ma_tuyen" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Ma_ga_tram_len" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="Ma_ga_tram_xuong" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="Gio_len" Type="time" Precision="7" />
+          <Property Name="Gio_xuong" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="HD_ve_thang">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+            <PropertyRef Name="Ngay_su_dung" />
+            <PropertyRef Name="Gio_len" />
+          </Key>
+          <Property Name="Ma_ve" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Ngay_su_dung" Type="date" Nullable="false" />
+          <Property Name="Gio_len" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Gio_xuong" Type="time" Precision="7" />
+          <Property Name="Ga_tram_len" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="Ga_tram_xuong" Type="char" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nhan_Vien">
+          <Key>
+            <PropertyRef Name="Ma_nhan_vien" />
+          </Key>
+          <Property Name="Ma_nhan_vien" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="30" />
+          <Property Name="loai_cong_viec" Type="varchar" MaxLength="100" />
+          <Property Name="ngay_sinh" Type="date" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="gioi_tinh" Type="char" MaxLength="1" />
+          <Property Name="dien_thoai_di_dong" Type="char" MaxLength="10" />
+          <Property Name="dien_thoai_noi_bo" Type="char" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="The_Tu">
+          <Key>
+            <PropertyRef Name="Ma_the_tu" />
+          </Key>
+          <Property Name="Ma_the_tu" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="Ngay_mua" Type="datetime" />
+          <Property Name="Ma_hanh_khach" Type="char" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="Tuyen_tau_dien">
+          <Key>
+            <PropertyRef Name="Ma_tuyen_tau" />
+          </Key>
+          <Property Name="Ma_tuyen_tau" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Ten_tuyen_tau" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Don_gia" Type="int" />
+          <Property Name="Ma_tuyen_tau_dien" Type="char" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="Tuyen_tau_xe">
+          <Key>
+            <PropertyRef Name="Ma_tuyen" />
+          </Key>
+          <Property Name="Ma_tuyen" Type="char" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tuyen_xe_bus">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ma_tuyen_xe_bus" Type="char" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="Ve">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+          </Key>
+          <Property Name="Ma_ve" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Loai_ve" Type="tinyint" Nullable="false" />
+          <Property Name="Ngay_gio_mua" Type="datetime" />
+          <Property Name="Gia_ve" Type="int" />
+          <Property Name="Ma_khach_hang" Type="char" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="Ve_1_ngay">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+          </Key>
+          <Property Name="Ma_ve" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Ngay_su_dung" Type="date" />
+        </EntityType>
+        <EntityType Name="Ve_le">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+          </Key>
+          <Property Name="Ma_ve" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Ma_tuyen" Type="char" MaxLength="4" />
+          <Property Name="Ngay_su_dung" Type="date" />
+          <Property Name="Ma_ga_tram_len" Type="char" MaxLength="7" />
+          <Property Name="Ma_ga_tram_xuong" Type="char" MaxLength="7" />
+          <Property Name="Gio_len" Type="time" Precision="7" />
+          <Property Name="Gio_xuong" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Ve_thang">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+          </Key>
+          <Property Name="Ma_ve" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="Ma_tuyen" Type="char" MaxLength="4" />
+          <Property Name="Ma_ga_tram_1" Type="char" MaxLength="7" />
+          <Property Name="Ma_ga_tram_2" Type="char" MaxLength="7" />
+        </EntityType>
+        <Association Name="FK__Chuyen_ta__Ma_ga__6E01572D">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="1" />
+          <End Role="Chuyen_tau_xe_ghe_ga_tram" Type="Self.Chuyen_tau_xe_ghe_ga_tram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Chuyen_tau_xe_ghe_ga_tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chuyen_ta__Ma_tu__6B24EA82">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="1" />
+          <End Role="Chuyen_tau_xe" Type="Self.Chuyen_tau_xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="Chuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chuyen_tau_xe_gh__6D0D32F4">
+          <End Role="Chuyen_tau_xe" Type="Self.Chuyen_tau_xe" Multiplicity="1" />
+          <End Role="Chuyen_tau_xe_ghe_ga_tram" Type="Self.Chuyen_tau_xe_ghe_ga_tram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+              <PropertyRef Name="STT" />
+            </Principal>
+            <Dependent Role="Chuyen_tau_xe_ghe_ga_tram">
+              <PropertyRef Name="Ma_tuyen" />
+              <PropertyRef Name="STT_chuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doan_duon__Ma_co__68487DD7">
+          <End Role="Con_duong" Type="Self.Con_duong" Multiplicity="0..1" />
+          <End Role="Doan_duong" Type="Self.Doan_duong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Con_duong">
+              <PropertyRef Name="Ma_con_duong" />
+            </Principal>
+            <Dependent Role="Doan_duong">
+              <PropertyRef Name="Ma_con_duong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doan_duon__Ma_gi__66603565">
+          <End Role="Giao_lo" Type="Self.Giao_lo" Multiplicity="1" />
+          <End Role="Doan_duong" Type="Self.Doan_duong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Giao_lo">
+              <PropertyRef Name="Ma_giao_lo" />
+            </Principal>
+            <Dependent Role="Doan_duong">
+              <PropertyRef Name="Ma_giao_lo_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doan_duon__Ma_gi__6754599E">
+          <End Role="Giao_lo" Type="Self.Giao_lo" Multiplicity="1" />
+          <End Role="Doan_duong" Type="Self.Doan_duong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Giao_lo">
+              <PropertyRef Name="Ma_giao_lo" />
+            </Principal>
+            <Dependent Role="Doan_duong">
+              <PropertyRef Name="Ma_giao_lo_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ga_Tram__6C190EBB">
+          <End Role="Doan_duong" Type="Self.Doan_duong" Multiplicity="1" />
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doan_duong">
+              <PropertyRef Name="Ma_giao_lo_1" />
+              <PropertyRef Name="Ma_giao_lo_2" />
+            </Principal>
+            <Dependent Role="Ga_Tram">
+              <PropertyRef Name="ma_giao_lo_1" />
+              <PropertyRef Name="ma_giao_lo_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ga_Tram_L__Ma_ga__01142BA1">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="0..1" />
+          <End Role="Ga_Tram_Lam_Viec" Type="Self.Ga_Tram_Lam_Viec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Ga_Tram_Lam_Viec">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ga_Tram_L__Ma_nh__00200768">
+          <End Role="Nhan_Vien" Type="Self.Nhan_Vien" Multiplicity="1" />
+          <End Role="Ga_Tram_Lam_Viec" Type="Self.Ga_Tram_Lam_Viec" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Nhan_Vien">
+              <PropertyRef Name="Ma_nhan_vien" />
+            </Principal>
+            <Dependent Role="Ga_Tram_Lam_Viec">
+              <PropertyRef Name="Ma_nhan_vien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_nga__Ma_ga__7D439ABD">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="1" />
+          <End Role="HD_ve_ngay" Type="Self.HD_ve_ngay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="HD_ve_ngay">
+              <PropertyRef Name="Ma_ga_tram_xuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_nga__Ma_ga__7E37BEF6">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="1" />
+          <End Role="HD_ve_ngay" Type="Self.HD_ve_ngay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="HD_ve_ngay">
+              <PropertyRef Name="Ma_ga_tram_len" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_nga__Ma_tu__7C4F7684">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="1" />
+          <End Role="HD_ve_ngay" Type="Self.HD_ve_ngay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="HD_ve_ngay">
+              <PropertyRef Name="Ma_tuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_nga__Ma_ve__7B5B524B">
+          <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+          <End Role="HD_ve_ngay" Type="Self.HD_ve_ngay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ve">
+              <PropertyRef Name="Ma_ve" />
+            </Principal>
+            <Dependent Role="HD_ve_ngay">
+              <PropertyRef Name="Ma_ve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_tha__Ga_tr__787EE5A0">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="1" />
+          <End Role="HD_ve_thang" Type="Self.HD_ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="HD_ve_thang">
+              <PropertyRef Name="Ga_tram_len" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_tha__Ga_tr__797309D9">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="1" />
+          <End Role="HD_ve_thang" Type="Self.HD_ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="HD_ve_thang">
+              <PropertyRef Name="Ga_tram_xuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_tha__Ma_ve__778AC167">
+          <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+          <End Role="HD_ve_thang" Type="Self.HD_ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ve">
+              <PropertyRef Name="Ma_ve" />
+            </Principal>
+            <Dependent Role="HD_ve_thang">
+              <PropertyRef Name="Ma_ve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__The_Tu__Ma_hanh___7F2BE32F">
+          <End Role="Hanh_Khach" Type="Self.Hanh_Khach" Multiplicity="0..1" />
+          <End Role="The_Tu" Type="Self.The_Tu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hanh_Khach">
+              <PropertyRef Name="Ma_hanh_khach" />
+            </Principal>
+            <Dependent Role="The_Tu">
+              <PropertyRef Name="Ma_hanh_khach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tuyen_tau__Ma_tu__6A30C649">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="0..1" />
+          <End Role="Tuyen_tau_dien" Type="Self.Tuyen_tau_dien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="Tuyen_tau_dien">
+              <PropertyRef Name="Ma_tuyen_tau_dien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tuyen_xe___Ma_tu__693CA210">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="0..1" />
+          <End Role="Tuyen_xe_bus" Type="Self.Tuyen_xe_bus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="Tuyen_xe_bus">
+              <PropertyRef Name="Ma_tuyen_xe_bus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve__Ma_khach_han__6EF57B66">
+          <End Role="Hanh_Khach" Type="Self.Hanh_Khach" Multiplicity="0..1" />
+          <End Role="Ve" Type="Self.Ve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hanh_Khach">
+              <PropertyRef Name="Ma_hanh_khach" />
+            </Principal>
+            <Dependent Role="Ve">
+              <PropertyRef Name="Ma_khach_hang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_1_ngay__Ma_ve__7A672E12">
+          <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+          <End Role="Ve_1_ngay" Type="Self.Ve_1_ngay" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Ve">
+              <PropertyRef Name="Ma_ve" />
+            </Principal>
+            <Dependent Role="Ve_1_ngay">
+              <PropertyRef Name="Ma_ve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_le__Ma_ga_tra__71D1E811">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="0..1" />
+          <End Role="Ve_le" Type="Self.Ve_le" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Ve_le">
+              <PropertyRef Name="Ma_ga_tram_len" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_le__Ma_ga_tra__72C60C4A">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="0..1" />
+          <End Role="Ve_le" Type="Self.Ve_le" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Ve_le">
+              <PropertyRef Name="Ma_ga_tram_xuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_le__Ma_tuyen__70DDC3D8">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="0..1" />
+          <End Role="Ve_le" Type="Self.Ve_le" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="Ve_le">
+              <PropertyRef Name="Ma_tuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_le__Ma_ve__6FE99F9F">
+          <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+          <End Role="Ve_le" Type="Self.Ve_le" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Ve">
+              <PropertyRef Name="Ma_ve" />
+            </Principal>
+            <Dependent Role="Ve_le">
+              <PropertyRef Name="Ma_ve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_thang__Ma_ga___75A278F5">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="0..1" />
+          <End Role="Ve_thang" Type="Self.Ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Ve_thang">
+              <PropertyRef Name="Ma_ga_tram_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_thang__Ma_ga___76969D2E">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="0..1" />
+          <End Role="Ve_thang" Type="Self.Ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Ve_thang">
+              <PropertyRef Name="Ma_ga_tram_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_thang__Ma_tuy__74AE54BC">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="0..1" />
+          <End Role="Ve_thang" Type="Self.Ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="Ve_thang">
+              <PropertyRef Name="Ma_tuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_thang__Ma_ve__73BA3083">
+          <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+          <End Role="Ve_thang" Type="Self.Ve_thang" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Ve">
+              <PropertyRef Name="Ma_ve" />
+            </Principal>
+            <Dependent Role="Ve_thang">
+              <PropertyRef Name="Ma_ve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="LoTrinhTuyenXeTau" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="matuyen" Type="char" Mode="In" />
+        </Function>
+        <Function Name="Thong_ke_so_luot_nguoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="matuyen" Type="char" Mode="In" />
+          <Parameter Name="tungay" Type="date" Mode="In" />
+          <Parameter Name="denngay" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Ngay" Type="date" />
+                <Property Name="Tong_so_luot_nguoi" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <EntityContainer Name="QLPTCCModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bang_Gia" EntityType="Self.Bang_Gia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chuyen_tau_xe" EntityType="Self.Chuyen_tau_xe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chuyen_tau_xe_ghe_ga_tram" EntityType="Self.Chuyen_tau_xe_ghe_ga_tram" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Con_duong" EntityType="Self.Con_duong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doan_duong" EntityType="Self.Doan_duong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ga_Tram" EntityType="Self.Ga_Tram" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ga_Tram_Lam_Viec" EntityType="Self.Ga_Tram_Lam_Viec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Giao_lo" EntityType="Self.Giao_lo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hanh_Khach" EntityType="Self.Hanh_Khach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HD_ve_ngay" EntityType="Self.HD_ve_ngay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HD_ve_thang" EntityType="Self.HD_ve_thang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nhan_Vien" EntityType="Self.Nhan_Vien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="The_Tu" EntityType="Self.The_Tu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tuyen_tau_dien" EntityType="Self.Tuyen_tau_dien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tuyen_tau_xe" EntityType="Self.Tuyen_tau_xe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tuyen_xe_bus" EntityType="Self.Tuyen_xe_bus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ve" EntityType="Self.Ve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ve_1_ngay" EntityType="Self.Ve_1_ngay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ve_le" EntityType="Self.Ve_le" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ve_thang" EntityType="Self.Ve_thang" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Chuyen_ta__Ma_ga__6E01572D" Association="Self.FK__Chuyen_ta__Ma_ga__6E01572D">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Chuyen_tau_xe_ghe_ga_tram" EntitySet="Chuyen_tau_xe_ghe_ga_tram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chuyen_ta__Ma_tu__6B24EA82" Association="Self.FK__Chuyen_ta__Ma_tu__6B24EA82">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="Chuyen_tau_xe" EntitySet="Chuyen_tau_xe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chuyen_tau_xe_gh__6D0D32F4" Association="Self.FK__Chuyen_tau_xe_gh__6D0D32F4">
+            <End Role="Chuyen_tau_xe" EntitySet="Chuyen_tau_xe" />
+            <End Role="Chuyen_tau_xe_ghe_ga_tram" EntitySet="Chuyen_tau_xe_ghe_ga_tram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doan_duon__Ma_co__68487DD7" Association="Self.FK__Doan_duon__Ma_co__68487DD7">
+            <End Role="Con_duong" EntitySet="Con_duong" />
+            <End Role="Doan_duong" EntitySet="Doan_duong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doan_duon__Ma_gi__66603565" Association="Self.FK__Doan_duon__Ma_gi__66603565">
+            <End Role="Giao_lo" EntitySet="Giao_lo" />
+            <End Role="Doan_duong" EntitySet="Doan_duong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doan_duon__Ma_gi__6754599E" Association="Self.FK__Doan_duon__Ma_gi__6754599E">
+            <End Role="Giao_lo" EntitySet="Giao_lo" />
+            <End Role="Doan_duong" EntitySet="Doan_duong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ga_Tram__6C190EBB" Association="Self.FK__Ga_Tram__6C190EBB">
+            <End Role="Doan_duong" EntitySet="Doan_duong" />
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ga_Tram_L__Ma_ga__01142BA1" Association="Self.FK__Ga_Tram_L__Ma_ga__01142BA1">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Ga_Tram_Lam_Viec" EntitySet="Ga_Tram_Lam_Viec" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ga_Tram_L__Ma_nh__00200768" Association="Self.FK__Ga_Tram_L__Ma_nh__00200768">
+            <End Role="Nhan_Vien" EntitySet="Nhan_Vien" />
+            <End Role="Ga_Tram_Lam_Viec" EntitySet="Ga_Tram_Lam_Viec" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_nga__Ma_ga__7D439ABD" Association="Self.FK__HD_ve_nga__Ma_ga__7D439ABD">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="HD_ve_ngay" EntitySet="HD_ve_ngay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_nga__Ma_ga__7E37BEF6" Association="Self.FK__HD_ve_nga__Ma_ga__7E37BEF6">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="HD_ve_ngay" EntitySet="HD_ve_ngay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_nga__Ma_tu__7C4F7684" Association="Self.FK__HD_ve_nga__Ma_tu__7C4F7684">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="HD_ve_ngay" EntitySet="HD_ve_ngay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_nga__Ma_ve__7B5B524B" Association="Self.FK__HD_ve_nga__Ma_ve__7B5B524B">
+            <End Role="Ve" EntitySet="Ve" />
+            <End Role="HD_ve_ngay" EntitySet="HD_ve_ngay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_tha__Ga_tr__787EE5A0" Association="Self.FK__HD_ve_tha__Ga_tr__787EE5A0">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="HD_ve_thang" EntitySet="HD_ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_tha__Ga_tr__797309D9" Association="Self.FK__HD_ve_tha__Ga_tr__797309D9">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="HD_ve_thang" EntitySet="HD_ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_tha__Ma_ve__778AC167" Association="Self.FK__HD_ve_tha__Ma_ve__778AC167">
+            <End Role="Ve" EntitySet="Ve" />
+            <End Role="HD_ve_thang" EntitySet="HD_ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__The_Tu__Ma_hanh___7F2BE32F" Association="Self.FK__The_Tu__Ma_hanh___7F2BE32F">
+            <End Role="Hanh_Khach" EntitySet="Hanh_Khach" />
+            <End Role="The_Tu" EntitySet="The_Tu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tuyen_tau__Ma_tu__6A30C649" Association="Self.FK__Tuyen_tau__Ma_tu__6A30C649">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="Tuyen_tau_dien" EntitySet="Tuyen_tau_dien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tuyen_xe___Ma_tu__693CA210" Association="Self.FK__Tuyen_xe___Ma_tu__693CA210">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="Tuyen_xe_bus" EntitySet="Tuyen_xe_bus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve__Ma_khach_han__6EF57B66" Association="Self.FK__Ve__Ma_khach_han__6EF57B66">
+            <End Role="Hanh_Khach" EntitySet="Hanh_Khach" />
+            <End Role="Ve" EntitySet="Ve" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_1_ngay__Ma_ve__7A672E12" Association="Self.FK__Ve_1_ngay__Ma_ve__7A672E12">
+            <End Role="Ve" EntitySet="Ve" />
+            <End Role="Ve_1_ngay" EntitySet="Ve_1_ngay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_le__Ma_ga_tra__71D1E811" Association="Self.FK__Ve_le__Ma_ga_tra__71D1E811">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Ve_le" EntitySet="Ve_le" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_le__Ma_ga_tra__72C60C4A" Association="Self.FK__Ve_le__Ma_ga_tra__72C60C4A">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Ve_le" EntitySet="Ve_le" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_le__Ma_tuyen__70DDC3D8" Association="Self.FK__Ve_le__Ma_tuyen__70DDC3D8">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="Ve_le" EntitySet="Ve_le" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_le__Ma_ve__6FE99F9F" Association="Self.FK__Ve_le__Ma_ve__6FE99F9F">
+            <End Role="Ve" EntitySet="Ve" />
+            <End Role="Ve_le" EntitySet="Ve_le" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_thang__Ma_ga___75A278F5" Association="Self.FK__Ve_thang__Ma_ga___75A278F5">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Ve_thang" EntitySet="Ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_thang__Ma_ga___76969D2E" Association="Self.FK__Ve_thang__Ma_ga___76969D2E">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Ve_thang" EntitySet="Ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_thang__Ma_tuy__74AE54BC" Association="Self.FK__Ve_thang__Ma_tuy__74AE54BC">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="Ve_thang" EntitySet="Ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_thang__Ma_ve__73BA3083" Association="Self.FK__Ve_thang__Ma_ve__73BA3083">
+            <End Role="Ve" EntitySet="Ve" />
+            <End Role="Ve_thang" EntitySet="Ve_thang" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLPTCCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="Thong_ke_so_luot_nguoi_Result">
+          <Property Name="Ngay" Type="DateTime" />
+          <Property Name="Tong_so_luot_nguoi" Type="Int32" />
+        </ComplexType>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="displayName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="proxy" Type="Byte" />
+        </EntityType>
+        <EntityType Name="Bang_Gia">
+          <Key>
+            <PropertyRef Name="STT" />
+          </Key>
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <Property Name="don_gia_xe_bus" Type="Int32" />
+          <Property Name="gia_ve_1_ngay_trong_tuan" Type="Int32" />
+          <Property Name="gia_ve_1_ngay_cuoi_tuan" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Chuyen_tau_xe">
+          <Key>
+            <PropertyRef Name="Ma_tuyen" />
+            <PropertyRef Name="STT" />
+          </Key>
+          <Property Name="Ma_tuyen" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="STT" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Tuyen_tau_xe" Relationship="Self.FK__Chuyen_ta__Ma_tu__6B24EA82" FromRole="Chuyen_tau_xe" ToRole="Tuyen_tau_xe" />
+          <NavigationProperty Name="Chuyen_tau_xe_ghe_ga_tram" Relationship="Self.FK__Chuyen_tau_xe_gh__6D0D32F4" FromRole="Chuyen_tau_xe" ToRole="Chuyen_tau_xe_ghe_ga_tram" />
+        </EntityType>
+        <EntityType Name="Chuyen_tau_xe_ghe_ga_tram">
+          <Key>
+            <PropertyRef Name="Ma_tuyen" />
+            <PropertyRef Name="STT_chuyen" />
+            <PropertyRef Name="Ma_ga_tram" />
+          </Key>
+          <Property Name="Ma_tuyen" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="STT_chuyen" Type="Byte" Nullable="false" />
+          <Property Name="Ma_ga_tram" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="STT_tram" Type="Byte" />
+          <Property Name="gio_ghe" Type="Time" Precision="7" />
+          <Property Name="gio_di" Type="Time" Precision="7" />
+          <NavigationProperty Name="Chuyen_tau_xe" Relationship="Self.FK__Chuyen_tau_xe_gh__6D0D32F4" FromRole="Chuyen_tau_xe_ghe_ga_tram" ToRole="Chuyen_tau_xe" />
+          <NavigationProperty Name="Ga_Tram" Relationship="Self.FK__Chuyen_ta__Ma_ga__6E01572D" FromRole="Chuyen_tau_xe_ghe_ga_tram" ToRole="Ga_Tram" />
+        </EntityType>
+        <EntityType Name="Con_duong">
+          <Key>
+            <PropertyRef Name="Ma_con_duong" />
+          </Key>
+          <Property Name="Ma_con_duong" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ten_duong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doan_duong" Relationship="Self.FK__Doan_duon__Ma_co__68487DD7" FromRole="Con_duong" ToRole="Doan_duong" />
+        </EntityType>
+        <EntityType Name="Doan_duong">
+          <Key>
+            <PropertyRef Name="Ma_giao_lo_1" />
+            <PropertyRef Name="Ma_giao_lo_2" />
+          </Key>
+          <Property Name="Ma_giao_lo_1" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ma_giao_lo_2" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ma_con_duong" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="STT" Type="Int32" />
+          <NavigationProperty Name="Con_duong" Relationship="Self.FK__Doan_duon__Ma_co__68487DD7" FromRole="Doan_duong" ToRole="Con_duong" />
+          <NavigationProperty Name="Giao_lo" Relationship="Self.FK__Doan_duon__Ma_gi__66603565" FromRole="Doan_duong" ToRole="Giao_lo" />
+          <NavigationProperty Name="Giao_lo1" Relationship="Self.FK__Doan_duon__Ma_gi__6754599E" FromRole="Doan_duong" ToRole="Giao_lo" />
+          <NavigationProperty Name="Ga_Tram" Relationship="Self.FK__Ga_Tram__6C190EBB" FromRole="Doan_duong" ToRole="Ga_Tram" />
+        </EntityType>
+        <EntityType Name="Ga_Tram">
+          <Key>
+            <PropertyRef Name="Ma_ga_tram" />
+          </Key>
+          <Property Name="Ma_ga_tram" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dia_chi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ga_Tram1" Type="Byte" />
+          <Property Name="ma_giao_lo_1" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ma_giao_lo_2" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Chuyen_tau_xe_ghe_ga_tram" Relationship="Self.FK__Chuyen_ta__Ma_ga__6E01572D" FromRole="Ga_Tram" ToRole="Chuyen_tau_xe_ghe_ga_tram" />
+          <NavigationProperty Name="Doan_duong" Relationship="Self.FK__Ga_Tram__6C190EBB" FromRole="Ga_Tram" ToRole="Doan_duong" />
+          <NavigationProperty Name="Ga_Tram_Lam_Viec" Relationship="Self.FK__Ga_Tram_L__Ma_ga__01142BA1" FromRole="Ga_Tram" ToRole="Ga_Tram_Lam_Viec" />
+          <NavigationProperty Name="HD_ve_ngay" Relationship="Self.FK__HD_ve_nga__Ma_ga__7D439ABD" FromRole="Ga_Tram" ToRole="HD_ve_ngay" />
+          <NavigationProperty Name="HD_ve_ngay1" Relationship="Self.FK__HD_ve_nga__Ma_ga__7E37BEF6" FromRole="Ga_Tram" ToRole="HD_ve_ngay" />
+          <NavigationProperty Name="HD_ve_thang" Relationship="Self.FK__HD_ve_tha__Ga_tr__787EE5A0" FromRole="Ga_Tram" ToRole="HD_ve_thang" />
+          <NavigationProperty Name="HD_ve_thang1" Relationship="Self.FK__HD_ve_tha__Ga_tr__797309D9" FromRole="Ga_Tram" ToRole="HD_ve_thang" />
+          <NavigationProperty Name="Ve_le" Relationship="Self.FK__Ve_le__Ma_ga_tra__71D1E811" FromRole="Ga_Tram" ToRole="Ve_le" />
+          <NavigationProperty Name="Ve_le1" Relationship="Self.FK__Ve_le__Ma_ga_tra__72C60C4A" FromRole="Ga_Tram" ToRole="Ve_le" />
+          <NavigationProperty Name="Ve_thang" Relationship="Self.FK__Ve_thang__Ma_ga___75A278F5" FromRole="Ga_Tram" ToRole="Ve_thang" />
+          <NavigationProperty Name="Ve_thang1" Relationship="Self.FK__Ve_thang__Ma_ga___76969D2E" FromRole="Ga_Tram" ToRole="Ve_thang" />
+        </EntityType>
+        <EntityType Name="Ga_Tram_Lam_Viec">
+          <Key>
+            <PropertyRef Name="Ma_nhan_vien" />
+          </Key>
+          <Property Name="Ma_nhan_vien" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ma_ga_tram" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Ga_Tram" Relationship="Self.FK__Ga_Tram_L__Ma_ga__01142BA1" FromRole="Ga_Tram_Lam_Viec" ToRole="Ga_Tram" />
+          <NavigationProperty Name="Nhan_Vien" Relationship="Self.FK__Ga_Tram_L__Ma_nh__00200768" FromRole="Ga_Tram_Lam_Viec" ToRole="Nhan_Vien" />
+        </EntityType>
+        <EntityType Name="Giao_lo">
+          <Key>
+            <PropertyRef Name="Ma_giao_lo" />
+          </Key>
+          <Property Name="Ma_giao_lo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="long" Type="Double" />
+          <Property Name="lat" Type="Double" />
+          <NavigationProperty Name="Doan_duong" Relationship="Self.FK__Doan_duon__Ma_gi__66603565" FromRole="Giao_lo" ToRole="Doan_duong" />
+          <NavigationProperty Name="Doan_duong1" Relationship="Self.FK__Doan_duon__Ma_gi__6754599E" FromRole="Giao_lo" ToRole="Doan_duong" />
+        </EntityType>
+        <EntityType Name="Hanh_Khach">
+          <Key>
+            <PropertyRef Name="Ma_hanh_khach" />
+          </Key>
+          <Property Name="Ma_hanh_khach" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ten" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CMND_CCCD" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nghe_nghiep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dien_thoai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="gioi_tinh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ngay_sinh" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="The_Tu" Relationship="Self.FK__The_Tu__Ma_hanh___7F2BE32F" FromRole="Hanh_Khach" ToRole="The_Tu" />
+          <NavigationProperty Name="Ves" Relationship="Self.FK__Ve__Ma_khach_han__6EF57B66" FromRole="Hanh_Khach" ToRole="Ve" />
+        </EntityType>
+        <EntityType Name="HD_ve_ngay">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+            <PropertyRef Name="STT" />
+          </Key>
+          <Property Name="Ma_ve" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="STT" Type="Byte" Nullable="false" />
+          <Property Name="Ma_tuyen" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ma_ga_tram_len" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ma_ga_tram_xuong" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Gio_len" Type="Time" Precision="7" />
+          <Property Name="Gio_xuong" Type="Time" Precision="7" />
+          <NavigationProperty Name="Ga_Tram" Relationship="Self.FK__HD_ve_nga__Ma_ga__7D439ABD" FromRole="HD_ve_ngay" ToRole="Ga_Tram" />
+          <NavigationProperty Name="Ga_Tram1" Relationship="Self.FK__HD_ve_nga__Ma_ga__7E37BEF6" FromRole="HD_ve_ngay" ToRole="Ga_Tram" />
+          <NavigationProperty Name="Tuyen_tau_xe" Relationship="Self.FK__HD_ve_nga__Ma_tu__7C4F7684" FromRole="HD_ve_ngay" ToRole="Tuyen_tau_xe" />
+          <NavigationProperty Name="Ve" Relationship="Self.FK__HD_ve_nga__Ma_ve__7B5B524B" FromRole="HD_ve_ngay" ToRole="Ve" />
+        </EntityType>
+        <EntityType Name="HD_ve_thang">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+            <PropertyRef Name="Ngay_su_dung" />
+            <PropertyRef Name="Gio_len" />
+          </Key>
+          <Property Name="Ma_ve" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ngay_su_dung" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Gio_len" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Gio_xuong" Type="Time" Precision="7" />
+          <Property Name="Ga_tram_len" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ga_tram_xuong" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ga_Tram" Relationship="Self.FK__HD_ve_tha__Ga_tr__787EE5A0" FromRole="HD_ve_thang" ToRole="Ga_Tram" />
+          <NavigationProperty Name="Ga_Tram1" Relationship="Self.FK__HD_ve_tha__Ga_tr__797309D9" FromRole="HD_ve_thang" ToRole="Ga_Tram" />
+          <NavigationProperty Name="Ve" Relationship="Self.FK__HD_ve_tha__Ma_ve__778AC167" FromRole="HD_ve_thang" ToRole="Ve" />
+        </EntityType>
+        <EntityType Name="Nhan_Vien">
+          <Key>
+            <PropertyRef Name="Ma_nhan_vien" />
+          </Key>
+          <Property Name="Ma_nhan_vien" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ten" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="loai_cong_viec" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ngay_sinh" Type="DateTime" Precision="0" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gioi_tinh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="dien_thoai_di_dong" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="dien_thoai_noi_bo" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Ga_Tram_Lam_Viec" Relationship="Self.FK__Ga_Tram_L__Ma_nh__00200768" FromRole="Nhan_Vien" ToRole="Ga_Tram_Lam_Viec" />
+        </EntityType>
+        <EntityType Name="The_Tu">
+          <Key>
+            <PropertyRef Name="Ma_the_tu" />
+          </Key>
+          <Property Name="Ma_the_tu" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ngay_mua" Type="DateTime" Precision="3" />
+          <Property Name="Ma_hanh_khach" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Hanh_Khach" Relationship="Self.FK__The_Tu__Ma_hanh___7F2BE32F" FromRole="The_Tu" ToRole="Hanh_Khach" />
+        </EntityType>
+        <EntityType Name="Tuyen_tau_dien">
+          <Key>
+            <PropertyRef Name="Ma_tuyen_tau" />
+          </Key>
+          <Property Name="Ma_tuyen_tau" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ten_tuyen_tau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Don_gia" Type="Int32" />
+          <Property Name="Ma_tuyen_tau_dien" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Tuyen_tau_xe" Relationship="Self.FK__Tuyen_tau__Ma_tu__6A30C649" FromRole="Tuyen_tau_dien" ToRole="Tuyen_tau_xe" />
+        </EntityType>
+        <EntityType Name="Tuyen_tau_xe">
+          <Key>
+            <PropertyRef Name="Ma_tuyen" />
+          </Key>
+          <Property Name="Ma_tuyen" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Chuyen_tau_xe" Relationship="Self.FK__Chuyen_ta__Ma_tu__6B24EA82" FromRole="Tuyen_tau_xe" ToRole="Chuyen_tau_xe" />
+          <NavigationProperty Name="HD_ve_ngay" Relationship="Self.FK__HD_ve_nga__Ma_tu__7C4F7684" FromRole="Tuyen_tau_xe" ToRole="HD_ve_ngay" />
+          <NavigationProperty Name="Tuyen_tau_dien" Relationship="Self.FK__Tuyen_tau__Ma_tu__6A30C649" FromRole="Tuyen_tau_xe" ToRole="Tuyen_tau_dien" />
+          <NavigationProperty Name="Tuyen_xe_bus" Relationship="Self.FK__Tuyen_xe___Ma_tu__693CA210" FromRole="Tuyen_tau_xe" ToRole="Tuyen_xe_bus" />
+          <NavigationProperty Name="Ve_le" Relationship="Self.FK__Ve_le__Ma_tuyen__70DDC3D8" FromRole="Tuyen_tau_xe" ToRole="Ve_le" />
+          <NavigationProperty Name="Ve_thang" Relationship="Self.FK__Ve_thang__Ma_tuy__74AE54BC" FromRole="Tuyen_tau_xe" ToRole="Ve_thang" />
+        </EntityType>
+        <EntityType Name="Tuyen_xe_bus">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ma_tuyen_xe_bus" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Tuyen_tau_xe" Relationship="Self.FK__Tuyen_xe___Ma_tu__693CA210" FromRole="Tuyen_xe_bus" ToRole="Tuyen_tau_xe" />
+        </EntityType>
+        <EntityType Name="Ve">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+          </Key>
+          <Property Name="Ma_ve" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Loai_ve" Type="Byte" Nullable="false" />
+          <Property Name="Ngay_gio_mua" Type="DateTime" Precision="3" />
+          <Property Name="Gia_ve" Type="Int32" />
+          <Property Name="Ma_khach_hang" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Hanh_Khach" Relationship="Self.FK__Ve__Ma_khach_han__6EF57B66" FromRole="Ve" ToRole="Hanh_Khach" />
+          <NavigationProperty Name="HD_ve_ngay" Relationship="Self.FK__HD_ve_nga__Ma_ve__7B5B524B" FromRole="Ve" ToRole="HD_ve_ngay" />
+          <NavigationProperty Name="HD_ve_thang" Relationship="Self.FK__HD_ve_tha__Ma_ve__778AC167" FromRole="Ve" ToRole="HD_ve_thang" />
+          <NavigationProperty Name="Ve_1_ngay" Relationship="Self.FK__Ve_1_ngay__Ma_ve__7A672E12" FromRole="Ve" ToRole="Ve_1_ngay" />
+          <NavigationProperty Name="Ve_le" Relationship="Self.FK__Ve_le__Ma_ve__6FE99F9F" FromRole="Ve" ToRole="Ve_le" />
+          <NavigationProperty Name="Ve_thang" Relationship="Self.FK__Ve_thang__Ma_ve__73BA3083" FromRole="Ve" ToRole="Ve_thang" />
+        </EntityType>
+        <EntityType Name="Ve_1_ngay">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+          </Key>
+          <Property Name="Ma_ve" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ngay_su_dung" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Ve" Relationship="Self.FK__Ve_1_ngay__Ma_ve__7A672E12" FromRole="Ve_1_ngay" ToRole="Ve" />
+        </EntityType>
+        <EntityType Name="Ve_le">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+          </Key>
+          <Property Name="Ma_ve" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ma_tuyen" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Ngay_su_dung" Type="DateTime" Precision="0" />
+          <Property Name="Ma_ga_tram_len" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Ma_ga_tram_xuong" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Gio_len" Type="Time" Precision="7" />
+          <Property Name="Gio_xuong" Type="Time" Precision="7" />
+          <NavigationProperty Name="Ga_Tram" Relationship="Self.FK__Ve_le__Ma_ga_tra__71D1E811" FromRole="Ve_le" ToRole="Ga_Tram" />
+          <NavigationProperty Name="Ga_Tram1" Relationship="Self.FK__Ve_le__Ma_ga_tra__72C60C4A" FromRole="Ve_le" ToRole="Ga_Tram" />
+          <NavigationProperty Name="Tuyen_tau_xe" Relationship="Self.FK__Ve_le__Ma_tuyen__70DDC3D8" FromRole="Ve_le" ToRole="Tuyen_tau_xe" />
+          <NavigationProperty Name="Ve" Relationship="Self.FK__Ve_le__Ma_ve__6FE99F9F" FromRole="Ve_le" ToRole="Ve" />
+        </EntityType>
+        <EntityType Name="Ve_thang">
+          <Key>
+            <PropertyRef Name="Ma_ve" />
+          </Key>
+          <Property Name="Ma_ve" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Ma_tuyen" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="Ma_ga_tram_1" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Ma_ga_tram_2" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Ga_Tram" Relationship="Self.FK__Ve_thang__Ma_ga___75A278F5" FromRole="Ve_thang" ToRole="Ga_Tram" />
+          <NavigationProperty Name="Ga_Tram1" Relationship="Self.FK__Ve_thang__Ma_ga___76969D2E" FromRole="Ve_thang" ToRole="Ga_Tram" />
+          <NavigationProperty Name="Tuyen_tau_xe" Relationship="Self.FK__Ve_thang__Ma_tuy__74AE54BC" FromRole="Ve_thang" ToRole="Tuyen_tau_xe" />
+          <NavigationProperty Name="Ve" Relationship="Self.FK__Ve_thang__Ma_ve__73BA3083" FromRole="Ve_thang" ToRole="Ve" />
+        </EntityType>
+        <Association Name="FK__Chuyen_ta__Ma_tu__6B24EA82">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="1" />
+          <End Role="Chuyen_tau_xe" Type="Self.Chuyen_tau_xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="Chuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chuyen_tau_xe_gh__6D0D32F4">
+          <End Role="Chuyen_tau_xe" Type="Self.Chuyen_tau_xe" Multiplicity="1" />
+          <End Role="Chuyen_tau_xe_ghe_ga_tram" Type="Self.Chuyen_tau_xe_ghe_ga_tram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+              <PropertyRef Name="STT" />
+            </Principal>
+            <Dependent Role="Chuyen_tau_xe_ghe_ga_tram">
+              <PropertyRef Name="Ma_tuyen" />
+              <PropertyRef Name="STT_chuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Chuyen_ta__Ma_ga__6E01572D">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="1" />
+          <End Role="Chuyen_tau_xe_ghe_ga_tram" Type="Self.Chuyen_tau_xe_ghe_ga_tram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Chuyen_tau_xe_ghe_ga_tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doan_duon__Ma_co__68487DD7">
+          <End Role="Con_duong" Type="Self.Con_duong" Multiplicity="0..1" />
+          <End Role="Doan_duong" Type="Self.Doan_duong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Con_duong">
+              <PropertyRef Name="Ma_con_duong" />
+            </Principal>
+            <Dependent Role="Doan_duong">
+              <PropertyRef Name="Ma_con_duong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doan_duon__Ma_gi__66603565">
+          <End Role="Giao_lo" Type="Self.Giao_lo" Multiplicity="1" />
+          <End Role="Doan_duong" Type="Self.Doan_duong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Giao_lo">
+              <PropertyRef Name="Ma_giao_lo" />
+            </Principal>
+            <Dependent Role="Doan_duong">
+              <PropertyRef Name="Ma_giao_lo_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Doan_duon__Ma_gi__6754599E">
+          <End Role="Giao_lo" Type="Self.Giao_lo" Multiplicity="1" />
+          <End Role="Doan_duong" Type="Self.Doan_duong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Giao_lo">
+              <PropertyRef Name="Ma_giao_lo" />
+            </Principal>
+            <Dependent Role="Doan_duong">
+              <PropertyRef Name="Ma_giao_lo_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ga_Tram__6C190EBB">
+          <End Role="Doan_duong" Type="Self.Doan_duong" Multiplicity="1" />
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doan_duong">
+              <PropertyRef Name="Ma_giao_lo_1" />
+              <PropertyRef Name="Ma_giao_lo_2" />
+            </Principal>
+            <Dependent Role="Ga_Tram">
+              <PropertyRef Name="ma_giao_lo_1" />
+              <PropertyRef Name="ma_giao_lo_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ga_Tram_L__Ma_ga__01142BA1">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="0..1" />
+          <End Role="Ga_Tram_Lam_Viec" Type="Self.Ga_Tram_Lam_Viec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Ga_Tram_Lam_Viec">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_nga__Ma_ga__7D439ABD">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="1" />
+          <End Role="HD_ve_ngay" Type="Self.HD_ve_ngay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="HD_ve_ngay">
+              <PropertyRef Name="Ma_ga_tram_xuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_nga__Ma_ga__7E37BEF6">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="1" />
+          <End Role="HD_ve_ngay" Type="Self.HD_ve_ngay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="HD_ve_ngay">
+              <PropertyRef Name="Ma_ga_tram_len" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_tha__Ga_tr__787EE5A0">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="1" />
+          <End Role="HD_ve_thang" Type="Self.HD_ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="HD_ve_thang">
+              <PropertyRef Name="Ga_tram_len" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_tha__Ga_tr__797309D9">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="1" />
+          <End Role="HD_ve_thang" Type="Self.HD_ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="HD_ve_thang">
+              <PropertyRef Name="Ga_tram_xuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_le__Ma_ga_tra__71D1E811">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="0..1" />
+          <End Role="Ve_le" Type="Self.Ve_le" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Ve_le">
+              <PropertyRef Name="Ma_ga_tram_len" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_le__Ma_ga_tra__72C60C4A">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="0..1" />
+          <End Role="Ve_le" Type="Self.Ve_le" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Ve_le">
+              <PropertyRef Name="Ma_ga_tram_xuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_thang__Ma_ga___75A278F5">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="0..1" />
+          <End Role="Ve_thang" Type="Self.Ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Ve_thang">
+              <PropertyRef Name="Ma_ga_tram_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_thang__Ma_ga___76969D2E">
+          <End Role="Ga_Tram" Type="Self.Ga_Tram" Multiplicity="0..1" />
+          <End Role="Ve_thang" Type="Self.Ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ga_Tram">
+              <PropertyRef Name="Ma_ga_tram" />
+            </Principal>
+            <Dependent Role="Ve_thang">
+              <PropertyRef Name="Ma_ga_tram_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ga_Tram_L__Ma_nh__00200768">
+          <End Role="Nhan_Vien" Type="Self.Nhan_Vien" Multiplicity="1" />
+          <End Role="Ga_Tram_Lam_Viec" Type="Self.Ga_Tram_Lam_Viec" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Nhan_Vien">
+              <PropertyRef Name="Ma_nhan_vien" />
+            </Principal>
+            <Dependent Role="Ga_Tram_Lam_Viec">
+              <PropertyRef Name="Ma_nhan_vien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__The_Tu__Ma_hanh___7F2BE32F">
+          <End Role="Hanh_Khach" Type="Self.Hanh_Khach" Multiplicity="0..1" />
+          <End Role="The_Tu" Type="Self.The_Tu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hanh_Khach">
+              <PropertyRef Name="Ma_hanh_khach" />
+            </Principal>
+            <Dependent Role="The_Tu">
+              <PropertyRef Name="Ma_hanh_khach" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve__Ma_khach_han__6EF57B66">
+          <End Role="Hanh_Khach" Type="Self.Hanh_Khach" Multiplicity="0..1" />
+          <End Role="Ve" Type="Self.Ve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hanh_Khach">
+              <PropertyRef Name="Ma_hanh_khach" />
+            </Principal>
+            <Dependent Role="Ve">
+              <PropertyRef Name="Ma_khach_hang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_nga__Ma_tu__7C4F7684">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="1" />
+          <End Role="HD_ve_ngay" Type="Self.HD_ve_ngay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="HD_ve_ngay">
+              <PropertyRef Name="Ma_tuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_nga__Ma_ve__7B5B524B">
+          <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+          <End Role="HD_ve_ngay" Type="Self.HD_ve_ngay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ve">
+              <PropertyRef Name="Ma_ve" />
+            </Principal>
+            <Dependent Role="HD_ve_ngay">
+              <PropertyRef Name="Ma_ve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HD_ve_tha__Ma_ve__778AC167">
+          <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+          <End Role="HD_ve_thang" Type="Self.HD_ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ve">
+              <PropertyRef Name="Ma_ve" />
+            </Principal>
+            <Dependent Role="HD_ve_thang">
+              <PropertyRef Name="Ma_ve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tuyen_tau__Ma_tu__6A30C649">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="0..1" />
+          <End Role="Tuyen_tau_dien" Type="Self.Tuyen_tau_dien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="Tuyen_tau_dien">
+              <PropertyRef Name="Ma_tuyen_tau_dien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tuyen_xe___Ma_tu__693CA210">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="0..1" />
+          <End Role="Tuyen_xe_bus" Type="Self.Tuyen_xe_bus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="Tuyen_xe_bus">
+              <PropertyRef Name="Ma_tuyen_xe_bus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_le__Ma_tuyen__70DDC3D8">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="0..1" />
+          <End Role="Ve_le" Type="Self.Ve_le" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="Ve_le">
+              <PropertyRef Name="Ma_tuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_thang__Ma_tuy__74AE54BC">
+          <End Role="Tuyen_tau_xe" Type="Self.Tuyen_tau_xe" Multiplicity="0..1" />
+          <End Role="Ve_thang" Type="Self.Ve_thang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tuyen_tau_xe">
+              <PropertyRef Name="Ma_tuyen" />
+            </Principal>
+            <Dependent Role="Ve_thang">
+              <PropertyRef Name="Ma_tuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_1_ngay__Ma_ve__7A672E12">
+          <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+          <End Role="Ve_1_ngay" Type="Self.Ve_1_ngay" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Ve">
+              <PropertyRef Name="Ma_ve" />
+            </Principal>
+            <Dependent Role="Ve_1_ngay">
+              <PropertyRef Name="Ma_ve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_le__Ma_ve__6FE99F9F">
+          <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+          <End Role="Ve_le" Type="Self.Ve_le" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Ve">
+              <PropertyRef Name="Ma_ve" />
+            </Principal>
+            <Dependent Role="Ve_le">
+              <PropertyRef Name="Ma_ve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ve_thang__Ma_ve__73BA3083">
+          <End Role="Ve" Type="Self.Ve" Multiplicity="1" />
+          <End Role="Ve_thang" Type="Self.Ve_thang" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Ve">
+              <PropertyRef Name="Ma_ve" />
+            </Principal>
+            <Dependent Role="Ve_thang">
+              <PropertyRef Name="Ma_ve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLPTCCEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Bang_Gia" EntityType="Self.Bang_Gia" />
+          <EntitySet Name="Chuyen_tau_xe" EntityType="Self.Chuyen_tau_xe" />
+          <EntitySet Name="Chuyen_tau_xe_ghe_ga_tram" EntityType="Self.Chuyen_tau_xe_ghe_ga_tram" />
+          <EntitySet Name="Con_duong" EntityType="Self.Con_duong" />
+          <EntitySet Name="Doan_duong" EntityType="Self.Doan_duong" />
+          <EntitySet Name="Ga_Tram" EntityType="Self.Ga_Tram" />
+          <EntitySet Name="Ga_Tram_Lam_Viec" EntityType="Self.Ga_Tram_Lam_Viec" />
+          <EntitySet Name="Giao_lo" EntityType="Self.Giao_lo" />
+          <EntitySet Name="Hanh_Khach" EntityType="Self.Hanh_Khach" />
+          <EntitySet Name="HD_ve_ngay" EntityType="Self.HD_ve_ngay" />
+          <EntitySet Name="HD_ve_thang" EntityType="Self.HD_ve_thang" />
+          <EntitySet Name="Nhan_Vien" EntityType="Self.Nhan_Vien" />
+          <EntitySet Name="The_Tu" EntityType="Self.The_Tu" />
+          <EntitySet Name="Tuyen_tau_dien" EntityType="Self.Tuyen_tau_dien" />
+          <EntitySet Name="Tuyen_tau_xe" EntityType="Self.Tuyen_tau_xe" />
+          <EntitySet Name="Tuyen_xe_bus" EntityType="Self.Tuyen_xe_bus" />
+          <EntitySet Name="Ves" EntityType="Self.Ve" />
+          <EntitySet Name="Ve_1_ngay" EntityType="Self.Ve_1_ngay" />
+          <EntitySet Name="Ve_le" EntityType="Self.Ve_le" />
+          <EntitySet Name="Ve_thang" EntityType="Self.Ve_thang" />
+          <AssociationSet Name="FK__Chuyen_ta__Ma_tu__6B24EA82" Association="Self.FK__Chuyen_ta__Ma_tu__6B24EA82">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="Chuyen_tau_xe" EntitySet="Chuyen_tau_xe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chuyen_tau_xe_gh__6D0D32F4" Association="Self.FK__Chuyen_tau_xe_gh__6D0D32F4">
+            <End Role="Chuyen_tau_xe" EntitySet="Chuyen_tau_xe" />
+            <End Role="Chuyen_tau_xe_ghe_ga_tram" EntitySet="Chuyen_tau_xe_ghe_ga_tram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Chuyen_ta__Ma_ga__6E01572D" Association="Self.FK__Chuyen_ta__Ma_ga__6E01572D">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Chuyen_tau_xe_ghe_ga_tram" EntitySet="Chuyen_tau_xe_ghe_ga_tram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doan_duon__Ma_co__68487DD7" Association="Self.FK__Doan_duon__Ma_co__68487DD7">
+            <End Role="Con_duong" EntitySet="Con_duong" />
+            <End Role="Doan_duong" EntitySet="Doan_duong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doan_duon__Ma_gi__66603565" Association="Self.FK__Doan_duon__Ma_gi__66603565">
+            <End Role="Giao_lo" EntitySet="Giao_lo" />
+            <End Role="Doan_duong" EntitySet="Doan_duong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Doan_duon__Ma_gi__6754599E" Association="Self.FK__Doan_duon__Ma_gi__6754599E">
+            <End Role="Giao_lo" EntitySet="Giao_lo" />
+            <End Role="Doan_duong" EntitySet="Doan_duong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ga_Tram__6C190EBB" Association="Self.FK__Ga_Tram__6C190EBB">
+            <End Role="Doan_duong" EntitySet="Doan_duong" />
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ga_Tram_L__Ma_ga__01142BA1" Association="Self.FK__Ga_Tram_L__Ma_ga__01142BA1">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Ga_Tram_Lam_Viec" EntitySet="Ga_Tram_Lam_Viec" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_nga__Ma_ga__7D439ABD" Association="Self.FK__HD_ve_nga__Ma_ga__7D439ABD">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="HD_ve_ngay" EntitySet="HD_ve_ngay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_nga__Ma_ga__7E37BEF6" Association="Self.FK__HD_ve_nga__Ma_ga__7E37BEF6">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="HD_ve_ngay" EntitySet="HD_ve_ngay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_tha__Ga_tr__787EE5A0" Association="Self.FK__HD_ve_tha__Ga_tr__787EE5A0">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="HD_ve_thang" EntitySet="HD_ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_tha__Ga_tr__797309D9" Association="Self.FK__HD_ve_tha__Ga_tr__797309D9">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="HD_ve_thang" EntitySet="HD_ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_le__Ma_ga_tra__71D1E811" Association="Self.FK__Ve_le__Ma_ga_tra__71D1E811">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Ve_le" EntitySet="Ve_le" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_le__Ma_ga_tra__72C60C4A" Association="Self.FK__Ve_le__Ma_ga_tra__72C60C4A">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Ve_le" EntitySet="Ve_le" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_thang__Ma_ga___75A278F5" Association="Self.FK__Ve_thang__Ma_ga___75A278F5">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Ve_thang" EntitySet="Ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_thang__Ma_ga___76969D2E" Association="Self.FK__Ve_thang__Ma_ga___76969D2E">
+            <End Role="Ga_Tram" EntitySet="Ga_Tram" />
+            <End Role="Ve_thang" EntitySet="Ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ga_Tram_L__Ma_nh__00200768" Association="Self.FK__Ga_Tram_L__Ma_nh__00200768">
+            <End Role="Nhan_Vien" EntitySet="Nhan_Vien" />
+            <End Role="Ga_Tram_Lam_Viec" EntitySet="Ga_Tram_Lam_Viec" />
+          </AssociationSet>
+          <AssociationSet Name="FK__The_Tu__Ma_hanh___7F2BE32F" Association="Self.FK__The_Tu__Ma_hanh___7F2BE32F">
+            <End Role="Hanh_Khach" EntitySet="Hanh_Khach" />
+            <End Role="The_Tu" EntitySet="The_Tu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve__Ma_khach_han__6EF57B66" Association="Self.FK__Ve__Ma_khach_han__6EF57B66">
+            <End Role="Hanh_Khach" EntitySet="Hanh_Khach" />
+            <End Role="Ve" EntitySet="Ves" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_nga__Ma_tu__7C4F7684" Association="Self.FK__HD_ve_nga__Ma_tu__7C4F7684">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="HD_ve_ngay" EntitySet="HD_ve_ngay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_nga__Ma_ve__7B5B524B" Association="Self.FK__HD_ve_nga__Ma_ve__7B5B524B">
+            <End Role="Ve" EntitySet="Ves" />
+            <End Role="HD_ve_ngay" EntitySet="HD_ve_ngay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HD_ve_tha__Ma_ve__778AC167" Association="Self.FK__HD_ve_tha__Ma_ve__778AC167">
+            <End Role="Ve" EntitySet="Ves" />
+            <End Role="HD_ve_thang" EntitySet="HD_ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tuyen_tau__Ma_tu__6A30C649" Association="Self.FK__Tuyen_tau__Ma_tu__6A30C649">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="Tuyen_tau_dien" EntitySet="Tuyen_tau_dien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tuyen_xe___Ma_tu__693CA210" Association="Self.FK__Tuyen_xe___Ma_tu__693CA210">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="Tuyen_xe_bus" EntitySet="Tuyen_xe_bus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_le__Ma_tuyen__70DDC3D8" Association="Self.FK__Ve_le__Ma_tuyen__70DDC3D8">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="Ve_le" EntitySet="Ve_le" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_thang__Ma_tuy__74AE54BC" Association="Self.FK__Ve_thang__Ma_tuy__74AE54BC">
+            <End Role="Tuyen_tau_xe" EntitySet="Tuyen_tau_xe" />
+            <End Role="Ve_thang" EntitySet="Ve_thang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_1_ngay__Ma_ve__7A672E12" Association="Self.FK__Ve_1_ngay__Ma_ve__7A672E12">
+            <End Role="Ve" EntitySet="Ves" />
+            <End Role="Ve_1_ngay" EntitySet="Ve_1_ngay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_le__Ma_ve__6FE99F9F" Association="Self.FK__Ve_le__Ma_ve__6FE99F9F">
+            <End Role="Ve" EntitySet="Ves" />
+            <End Role="Ve_le" EntitySet="Ve_le" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ve_thang__Ma_ve__73BA3083" Association="Self.FK__Ve_thang__Ma_ve__73BA3083">
+            <End Role="Ve" EntitySet="Ves" />
+            <End Role="Ve_thang" EntitySet="Ve_thang" />
+          </AssociationSet>
+          <FunctionImport Name="Thong_ke_so_luot_nguoi" IsComposable="true" ReturnType="Collection(QLPTCCModel.Thong_ke_so_luot_nguoi_Result)">
+            <Parameter Name="matuyen" Mode="In" Type="String" />
+            <Parameter Name="tungay" Mode="In" Type="DateTime" />
+            <Parameter Name="denngay" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="LoTrinhTuyenXeTau" ReturnType="Collection(QLPTCCModel.LoTrinhTuyenXeTau_Result)">
+            <Parameter Name="matuyen" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="LoTrinhTuyenXeTau_Result">
+          <Property Type="Byte" Name="STT_tram" Nullable="true" />
+          <Property Type="String" Name="Ten_Tram" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLPTCCModelStoreContainer" CdmEntityContainer="QLPTCCEntities3">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="QLPTCCModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="displayName" ColumnName="displayName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="proxy" ColumnName="proxy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bang_Gia">
+            <EntityTypeMapping TypeName="QLPTCCModel.Bang_Gia">
+              <MappingFragment StoreEntitySet="Bang_Gia">
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="don_gia_xe_bus" ColumnName="don_gia_xe_bus" />
+                <ScalarProperty Name="gia_ve_1_ngay_trong_tuan" ColumnName="gia_ve_1_ngay_trong_tuan" />
+                <ScalarProperty Name="gia_ve_1_ngay_cuoi_tuan" ColumnName="gia_ve_1_ngay_cuoi_tuan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chuyen_tau_xe">
+            <EntityTypeMapping TypeName="QLPTCCModel.Chuyen_tau_xe">
+              <MappingFragment StoreEntitySet="Chuyen_tau_xe">
+                <ScalarProperty Name="Ma_tuyen" ColumnName="Ma_tuyen" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chuyen_tau_xe_ghe_ga_tram">
+            <EntityTypeMapping TypeName="QLPTCCModel.Chuyen_tau_xe_ghe_ga_tram">
+              <MappingFragment StoreEntitySet="Chuyen_tau_xe_ghe_ga_tram">
+                <ScalarProperty Name="Ma_tuyen" ColumnName="Ma_tuyen" />
+                <ScalarProperty Name="STT_chuyen" ColumnName="STT_chuyen" />
+                <ScalarProperty Name="Ma_ga_tram" ColumnName="Ma_ga_tram" />
+                <ScalarProperty Name="STT_tram" ColumnName="STT_tram" />
+                <ScalarProperty Name="gio_ghe" ColumnName="gio_ghe" />
+                <ScalarProperty Name="gio_di" ColumnName="gio_di" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Con_duong">
+            <EntityTypeMapping TypeName="QLPTCCModel.Con_duong">
+              <MappingFragment StoreEntitySet="Con_duong">
+                <ScalarProperty Name="Ma_con_duong" ColumnName="Ma_con_duong" />
+                <ScalarProperty Name="Ten_duong" ColumnName="Ten_duong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doan_duong">
+            <EntityTypeMapping TypeName="QLPTCCModel.Doan_duong">
+              <MappingFragment StoreEntitySet="Doan_duong">
+                <ScalarProperty Name="Ma_giao_lo_1" ColumnName="Ma_giao_lo_1" />
+                <ScalarProperty Name="Ma_giao_lo_2" ColumnName="Ma_giao_lo_2" />
+                <ScalarProperty Name="Ma_con_duong" ColumnName="Ma_con_duong" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ga_Tram">
+            <EntityTypeMapping TypeName="QLPTCCModel.Ga_Tram">
+              <MappingFragment StoreEntitySet="Ga_Tram">
+                <ScalarProperty Name="Ma_ga_tram" ColumnName="Ma_ga_tram" />
+                <ScalarProperty Name="dia_chi" ColumnName="dia_chi" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="Ga_Tram1" ColumnName="Ga_Tram" />
+                <ScalarProperty Name="ma_giao_lo_1" ColumnName="ma_giao_lo_1" />
+                <ScalarProperty Name="ma_giao_lo_2" ColumnName="ma_giao_lo_2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ga_Tram_Lam_Viec">
+            <EntityTypeMapping TypeName="QLPTCCModel.Ga_Tram_Lam_Viec">
+              <MappingFragment StoreEntitySet="Ga_Tram_Lam_Viec">
+                <ScalarProperty Name="Ma_nhan_vien" ColumnName="Ma_nhan_vien" />
+                <ScalarProperty Name="Ma_ga_tram" ColumnName="Ma_ga_tram" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Giao_lo">
+            <EntityTypeMapping TypeName="QLPTCCModel.Giao_lo">
+              <MappingFragment StoreEntitySet="Giao_lo">
+                <ScalarProperty Name="Ma_giao_lo" ColumnName="Ma_giao_lo" />
+                <ScalarProperty Name="long" ColumnName="long" />
+                <ScalarProperty Name="lat" ColumnName="lat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hanh_Khach">
+            <EntityTypeMapping TypeName="QLPTCCModel.Hanh_Khach">
+              <MappingFragment StoreEntitySet="Hanh_Khach">
+                <ScalarProperty Name="Ma_hanh_khach" ColumnName="Ma_hanh_khach" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="CMND_CCCD" ColumnName="CMND_CCCD" />
+                <ScalarProperty Name="nghe_nghiep" ColumnName="nghe_nghiep" />
+                <ScalarProperty Name="dien_thoai" ColumnName="dien_thoai" />
+                <ScalarProperty Name="gioi_tinh" ColumnName="gioi_tinh" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="ngay_sinh" ColumnName="ngay_sinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HD_ve_ngay">
+            <EntityTypeMapping TypeName="QLPTCCModel.HD_ve_ngay">
+              <MappingFragment StoreEntitySet="HD_ve_ngay">
+                <ScalarProperty Name="Ma_ve" ColumnName="Ma_ve" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="Ma_tuyen" ColumnName="Ma_tuyen" />
+                <ScalarProperty Name="Ma_ga_tram_len" ColumnName="Ma_ga_tram_len" />
+                <ScalarProperty Name="Ma_ga_tram_xuong" ColumnName="Ma_ga_tram_xuong" />
+                <ScalarProperty Name="Gio_len" ColumnName="Gio_len" />
+                <ScalarProperty Name="Gio_xuong" ColumnName="Gio_xuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HD_ve_thang">
+            <EntityTypeMapping TypeName="QLPTCCModel.HD_ve_thang">
+              <MappingFragment StoreEntitySet="HD_ve_thang">
+                <ScalarProperty Name="Ma_ve" ColumnName="Ma_ve" />
+                <ScalarProperty Name="Ngay_su_dung" ColumnName="Ngay_su_dung" />
+                <ScalarProperty Name="Gio_len" ColumnName="Gio_len" />
+                <ScalarProperty Name="Gio_xuong" ColumnName="Gio_xuong" />
+                <ScalarProperty Name="Ga_tram_len" ColumnName="Ga_tram_len" />
+                <ScalarProperty Name="Ga_tram_xuong" ColumnName="Ga_tram_xuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nhan_Vien">
+            <EntityTypeMapping TypeName="QLPTCCModel.Nhan_Vien">
+              <MappingFragment StoreEntitySet="Nhan_Vien">
+                <ScalarProperty Name="Ma_nhan_vien" ColumnName="Ma_nhan_vien" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="loai_cong_viec" ColumnName="loai_cong_viec" />
+                <ScalarProperty Name="ngay_sinh" ColumnName="ngay_sinh" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="gioi_tinh" ColumnName="gioi_tinh" />
+                <ScalarProperty Name="dien_thoai_di_dong" ColumnName="dien_thoai_di_dong" />
+                <ScalarProperty Name="dien_thoai_noi_bo" ColumnName="dien_thoai_noi_bo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="The_Tu">
+            <EntityTypeMapping TypeName="QLPTCCModel.The_Tu">
+              <MappingFragment StoreEntitySet="The_Tu">
+                <ScalarProperty Name="Ma_the_tu" ColumnName="Ma_the_tu" />
+                <ScalarProperty Name="Ngay_mua" ColumnName="Ngay_mua" />
+                <ScalarProperty Name="Ma_hanh_khach" ColumnName="Ma_hanh_khach" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tuyen_tau_dien">
+            <EntityTypeMapping TypeName="QLPTCCModel.Tuyen_tau_dien">
+              <MappingFragment StoreEntitySet="Tuyen_tau_dien">
+                <ScalarProperty Name="Ma_tuyen_tau" ColumnName="Ma_tuyen_tau" />
+                <ScalarProperty Name="Ten_tuyen_tau" ColumnName="Ten_tuyen_tau" />
+                <ScalarProperty Name="Don_gia" ColumnName="Don_gia" />
+                <ScalarProperty Name="Ma_tuyen_tau_dien" ColumnName="Ma_tuyen_tau_dien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tuyen_tau_xe">
+            <EntityTypeMapping TypeName="QLPTCCModel.Tuyen_tau_xe">
+              <MappingFragment StoreEntitySet="Tuyen_tau_xe">
+                <ScalarProperty Name="Ma_tuyen" ColumnName="Ma_tuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tuyen_xe_bus">
+            <EntityTypeMapping TypeName="QLPTCCModel.Tuyen_xe_bus">
+              <MappingFragment StoreEntitySet="Tuyen_xe_bus">
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="Ma_tuyen_xe_bus" ColumnName="Ma_tuyen_xe_bus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ves">
+            <EntityTypeMapping TypeName="QLPTCCModel.Ve">
+              <MappingFragment StoreEntitySet="Ve">
+                <ScalarProperty Name="Ma_ve" ColumnName="Ma_ve" />
+                <ScalarProperty Name="Loai_ve" ColumnName="Loai_ve" />
+                <ScalarProperty Name="Ngay_gio_mua" ColumnName="Ngay_gio_mua" />
+                <ScalarProperty Name="Gia_ve" ColumnName="Gia_ve" />
+                <ScalarProperty Name="Ma_khach_hang" ColumnName="Ma_khach_hang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ve_1_ngay">
+            <EntityTypeMapping TypeName="QLPTCCModel.Ve_1_ngay">
+              <MappingFragment StoreEntitySet="Ve_1_ngay">
+                <ScalarProperty Name="Ma_ve" ColumnName="Ma_ve" />
+                <ScalarProperty Name="Ngay_su_dung" ColumnName="Ngay_su_dung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ve_le">
+            <EntityTypeMapping TypeName="QLPTCCModel.Ve_le">
+              <MappingFragment StoreEntitySet="Ve_le">
+                <ScalarProperty Name="Ma_ve" ColumnName="Ma_ve" />
+                <ScalarProperty Name="Ma_tuyen" ColumnName="Ma_tuyen" />
+                <ScalarProperty Name="Ngay_su_dung" ColumnName="Ngay_su_dung" />
+                <ScalarProperty Name="Ma_ga_tram_len" ColumnName="Ma_ga_tram_len" />
+                <ScalarProperty Name="Ma_ga_tram_xuong" ColumnName="Ma_ga_tram_xuong" />
+                <ScalarProperty Name="Gio_len" ColumnName="Gio_len" />
+                <ScalarProperty Name="Gio_xuong" ColumnName="Gio_xuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ve_thang">
+            <EntityTypeMapping TypeName="QLPTCCModel.Ve_thang">
+              <MappingFragment StoreEntitySet="Ve_thang">
+                <ScalarProperty Name="Ma_ve" ColumnName="Ma_ve" />
+                <ScalarProperty Name="Ma_tuyen" ColumnName="Ma_tuyen" />
+                <ScalarProperty Name="Ma_ga_tram_1" ColumnName="Ma_ga_tram_1" />
+                <ScalarProperty Name="Ma_ga_tram_2" ColumnName="Ma_ga_tram_2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="QLPTCCModel.Store.Thong_ke_so_luot_nguoi" FunctionImportName="Thong_ke_so_luot_nguoi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLPTCCModel.Thong_ke_so_luot_nguoi_Result">
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="Tong_so_luot_nguoi" ColumnName="Tong_so_luot_nguoi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LoTrinhTuyenXeTau" FunctionName="QLPTCCModel.Store.LoTrinhTuyenXeTau">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLPTCCModel.LoTrinhTuyenXeTau_Result">
+                <ScalarProperty Name="STT_tram" ColumnName="STT_tram" />
+                <ScalarProperty Name="Ten_Tram" ColumnName="Ten_Tram" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

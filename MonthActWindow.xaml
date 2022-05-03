@@ -1,0 +1,114 @@
+﻿<Window x:Class="TransportManagerment.MonthActWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportManagerment"
+        mc:Ignorable="d"
+        Height="560" Width="850"
+        Name="monthActWindow"
+        Title="Quản lý hoạt động vé tháng"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:uc="clr-namespace:TransportManagerment.MyUserControl"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="LightGray"
+         BorderBrush="Green"
+        BorderThickness="2"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <!--DataContext="{StaticResource MainVM}">-->
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"
+                                   CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Path=Title, ElementName=monthActWindow}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <materialDesign:Card Background="PaleGreen" Grid.Row="0" Margin="5">
+                <WrapPanel Margin="0 0 0 10">
+                    <ComboBox Margin="5 5 15 5" x:Name="cbID" IsEditable="False"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             SelectionChanged="cbID_SelectionChanged"
+                             materialDesign:HintAssist.Hint="Mã vé tháng" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                    <DatePicker VerticalAlignment="Center" x:Name="dtpkDate"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             Width="100" Margin="5 5 15 5"
+                             materialDesign:HintAssist.Hint="Ngày sử dụng" 
+                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    <ComboBox Margin="5 5 15 5" x:Name="cbIDstop1" IsEditable="False"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             SelectionChanged="cbIDstop1_SelectionChanged"
+                             materialDesign:HintAssist.Hint="Mã ga/trạm lên" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                    <ComboBox Margin="5 5 15 5" x:Name="cbIDstop2" IsEditable="False"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             SelectionChanged="cbIDstop2_SelectionChanged"
+                             materialDesign:HintAssist.Hint="Mã ga/trạm xuống" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                    <materialDesign:TimePicker Is24Hours="True" x:Name="tpkCome"
+                             Width="100" Margin="5 5 15 -5"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:HintAssist.Hint="Giờ lên"/>
+                    <materialDesign:TimePicker Is24Hours="True" x:Name="tpkLeave"
+                             Width="100" Margin="5 5 15 -5"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:HintAssist.Hint="Giờ xuống"/>
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Background="PaleGreen" Grid.Row="1" Margin="5">
+                <WrapPanel>
+                    <Button x:Name="btnAdd" Click="btnAdd_Click" IsEnabled="{Binding isStaff}" Background="Green" Content="Thêm" Margin="5" Width="100"></Button>
+                    <Button x:Name="btnUpdate" Click="btnUpdate_Click" IsEnabled="False" Background="Green" Content="Sửa" Margin="5" Width="100"></Button>
+                    <Button x:Name="btnDelete" Click="btnDelete_Click" IsEnabled="False" Background="Green" Content="Xóa" Margin="5" Width="100"></Button>
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card  Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <ListView x:Name="lstMonthAct"
+                              SelectionChanged="lstMonthAct_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã vé" DisplayMemberBinding="{Binding Ma_ve}"></GridViewColumn>
+                                <GridViewColumn Header="Ngày sử dụng" DisplayMemberBinding="{Binding Ngay_su_dung, StringFormat='dd-MM-yyyy'}"></GridViewColumn>
+                                <GridViewColumn Header="Mã ga/trạm lên" DisplayMemberBinding="{Binding Ga_tram_len}"></GridViewColumn>
+                                <GridViewColumn Header="Mã ga/trạm xuống" DisplayMemberBinding="{Binding Ga_tram_xuong}"></GridViewColumn>
+                                <GridViewColumn Header="Giờ lên" DisplayMemberBinding="{Binding Gio_len}"></GridViewColumn>
+                                <GridViewColumn Header="Giờ xuống" DisplayMemberBinding="{Binding Gio_xuong}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>

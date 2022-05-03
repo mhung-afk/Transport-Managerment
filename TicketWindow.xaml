@@ -1,0 +1,115 @@
+﻿<Window x:Class="TransportManagerment.TicketWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransportManagerment"
+        mc:Ignorable="d"
+        Height="560" Width="800"
+        Name="ticketWindow"
+        Title="Quản lý thông tin vé"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:uc="clr-namespace:TransportManagerment.MyUserControl"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="LightGray"
+         BorderBrush="Green"
+        BorderThickness="2"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <!--DataContext="{StaticResource MainVM}">-->
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"
+                                   CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Path=Title, ElementName=ticketWindow}"></uc:ControlBarUC>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <materialDesign:Card Background="PaleGreen" Grid.Row="0" Margin="5">
+                <WrapPanel Margin="0 0 0 10">
+                    <TextBox Text="" Margin="5 5 15 5" x:Name="txbID"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:HintAssist.Hint="Mã vé" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <ComboBox Text="" Margin="5 5 15 5" x:Name="cbType" IsEditable="False"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:HintAssist.Hint="Loại vé" Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+                    <DatePicker VerticalAlignment="Center" x:Name="dtpkPurchaseDay"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             Width="100" Margin="5 5 15 5"
+                             materialDesign:HintAssist.Hint="Ngày mua" 
+                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                    <TextBox Text="" Margin="5 5 15 5" x:Name="txbPrice" IsReadOnly="True"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:HintAssist.Hint="Giá vé" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox Text="" Margin="5 5 15 5" x:Name="txbIDcus"
+                             materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                             materialDesign:HintAssist.Foreground="Green"
+                             materialDesign:HintAssist.Hint="Mã khách hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </WrapPanel>
+            </materialDesign:Card>
+
+            <materialDesign:Card Background="PaleGreen" Grid.Row="1" Margin="5">
+                <WrapPanel>
+                    <Button x:Name="btnAdd" Click="btnAdd_Click" IsEnabled="{Binding isStaff}" Background="Green" Content="Thêm" Margin="5" Width="100"></Button>
+                    <Button x:Name="btnUpdate" Click="btnUpdate_Click" IsEnabled="False" Background="Green" Content="Sửa" Margin="5" Width="100"></Button>
+                    <Button x:Name="btnDelete" Click="btnDelete_Click" IsEnabled="False" Background="Green" Content="Xóa" Margin="5" Width="100"></Button>
+                </WrapPanel>
+            </materialDesign:Card>
+            
+            <materialDesign:Card  Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <ListView x:Name="lstTicket"
+                              SelectionChanged="lstTicket_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã vé" DisplayMemberBinding="{Binding Ma_ve}"></GridViewColumn>
+                                <GridViewColumn Header="Loại vé" DisplayMemberBinding="{Binding Loai_ve}"></GridViewColumn>
+                                <GridViewColumn Header="Ngày mua" DisplayMemberBinding="{Binding Ngay_gio_mua, StringFormat='dd-MM-yyyy'}"></GridViewColumn>
+                                <GridViewColumn Header="Giá vé" DisplayMemberBinding="{Binding Gia_ve}"></GridViewColumn>
+                                <GridViewColumn Header="Mã khách hàng" DisplayMemberBinding="{Binding Ma_khach_hang}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+
+            <materialDesign:Card Background="PaleGreen" Grid.Row="3" Margin="5">
+                <WrapPanel>
+                    <Button x:Name="btnOddWindow" Click="btnOddWindow_Click" Background="Green" Content="Vé lẻ" Margin="5" Width="120"></Button>
+                    <Button x:Name="btnDayWindow" Click="btnDayWindow_Click" Background="Green" Content="Vé ngày" Margin="5" Width="120"></Button>
+                    <Button x:Name="btnMonthWindow" Click="btnMonthWindow_Click" Background="Green" Content="Vé tháng" Margin="5" Width="120"></Button>
+                    <Button x:Name="btnDayActWindow" Click="btnDayActWindow_Click" Background="Green" Content="Hoạt động vé ngày" Margin="5" Width="160"></Button>
+                    <Button x:Name="btnMonthActWindow" Click="btnMonthActWindow_Click" Background="Green" Content="Hoạt động vé tháng" Margin="5" Width="160"></Button>
+                </WrapPanel>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>
